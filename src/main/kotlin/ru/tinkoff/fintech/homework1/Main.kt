@@ -8,15 +8,15 @@ fun main() {
     val cat = Cat("Kiss")
     val dog = Dog("Tor")
 
-    var pet: Pet = cat
+    val catPet: Pet = cat
 
     // cat's sound
-    pet.makeSound()
+    catPet.makeSound()
 
-    pet = dog
+    val dogPet: Pet = dog
 
     // dog's sound
-    pet.makeSound()
+    dogPet.makeSound()
 
     // mur, mur...
     cat.vibrate(1)

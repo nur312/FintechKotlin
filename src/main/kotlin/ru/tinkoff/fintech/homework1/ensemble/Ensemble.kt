@@ -2,7 +2,7 @@ package ru.tinkoff.fintech.homework1.ensemble
 
 import ru.tinkoff.fintech.homework1.pets.*
 
-class Ensemble(val cat: Cat, val dog: Dog) {
+class Ensemble(private val cat: Cat, private val dog: Dog) {
 
     fun makeMusic() {
 
