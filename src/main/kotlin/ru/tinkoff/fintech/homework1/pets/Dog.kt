@@ -1,6 +1,6 @@
 package ru.tinkoff.fintech.homework1.pets
 
-class Dog(override val name: String, override val sound: String = "bark", private val times: Int = 1) : Pet {
+class Dog(override val name: String, override val sound: String = "bark", var times: Int = 1) : Pet {
 
 
     override fun makeSound() {

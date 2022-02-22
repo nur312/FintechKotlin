@@ -12,6 +12,9 @@ class Ensemble(private val cat: Cat, private val dog: Dog) {
 
         dog.makeSound("wow")
 
+        dog.times = 3
+
+
         cat.makeSound()
     }
 }
