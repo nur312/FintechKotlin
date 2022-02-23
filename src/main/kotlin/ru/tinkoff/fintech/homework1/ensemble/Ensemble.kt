@@ -1,6 +1,7 @@
 package ru.tinkoff.fintech.homework1.ensemble
 
-import ru.tinkoff.fintech.homework1.pets.*
+import ru.tinkoff.fintech.homework1.pets.Cat
+import ru.tinkoff.fintech.homework1.pets.Dog
 
 class Ensemble(private val cat: Cat, private val dog: Dog) {
 
@@ -11,8 +12,6 @@ class Ensemble(private val cat: Cat, private val dog: Dog) {
         cat.vibrate(4)
 
         dog.makeSound("wow")
-
-        dog.times = 3
 
 
         cat.makeSound()

@@ -8,7 +8,7 @@ class Cat(override val name: String, override val sound: String = "meow") : Pet 
         println("Cat $name:\n\t$sound")
     }
 
-    fun vibrate(times: Int = 3) {
+    fun vibrate(times: Int = 1) {
 
         println("Cat $name:")
 

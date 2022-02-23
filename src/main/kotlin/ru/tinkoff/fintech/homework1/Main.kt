@@ -1,12 +1,14 @@
 package ru.tinkoff.fintech.homework1
 
 import ru.tinkoff.fintech.homework1.ensemble.Ensemble
-import ru.tinkoff.fintech.homework1.pets.*
+import ru.tinkoff.fintech.homework1.pets.Cat
+import ru.tinkoff.fintech.homework1.pets.Dog
+import ru.tinkoff.fintech.homework1.pets.Pet
 
 fun main() {
 
     val cat = Cat("Kiss")
-    val dog = Dog("Tor")
+    val dog = Dog(name = "Tor", maxMemorizeWordCount = 2)
 
     var pet: Pet = cat
 
@@ -23,6 +25,12 @@ fun main() {
 
     // russian dod :)
     dog.makeSound("гав")
+
+    dog.memorizeWord("Hello")
+    dog.memorizeWord("world")
+    dog.memorizeWord("Impossible")
+
+    dog.speak()
 
 
     val ensemble = Ensemble(cat, dog)
