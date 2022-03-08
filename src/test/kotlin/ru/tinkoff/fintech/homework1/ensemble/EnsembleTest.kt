@@ -38,7 +38,7 @@ internal class EnsembleTest {
     }
 
     @Test
-    fun makeMusic() {
+    fun `проверяем исполнение`() {
 
         val dog = spyk(Dog("Джо"))
 
@@ -51,5 +51,13 @@ internal class EnsembleTest {
         ensemble.makeMusic()
 
         verify(exactly = 1) { dog.getWordsAsList() }
+        verify(exactly = 1) { dog.sound }
+    }
+
+    @Test
+    fun `проверяем правильно ли составляются списки участников`() {
+        val ensemble = Ensemble(Cat("Кетрин"), Dog("Дореан"))
+
+        assertEquals(ensemble.getListOfParticipants(), listOf("Кетрин", "Дореан"))
     }
 }
