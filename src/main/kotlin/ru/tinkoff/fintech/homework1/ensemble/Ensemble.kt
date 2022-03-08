@@ -7,11 +7,13 @@ class Ensemble(private val cat: Cat, private val dog: Dog) {
 
     fun makeMusic() {
 
+        dog.speak()
+
         println("Ensemble's music")
 
         cat.vibrate(4)
 
-        dog.makeSound("wow")
+        dog.makeSound()
 
 
         cat.makeSound()

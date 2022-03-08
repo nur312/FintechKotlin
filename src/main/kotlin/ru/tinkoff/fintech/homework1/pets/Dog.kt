@@ -9,8 +9,7 @@ class Dog(override val name: String, override val sound: String = "bark", privat
 
     override fun makeSound() {
 
-        println("Dog $name: \n\t$sound")
-
+        println(getSoundAsText())
     }
 
     fun makeSound(anotherSound: String) {
@@ -33,10 +32,21 @@ class Dog(override val name: String, override val sound: String = "bark", privat
 
     fun speak() {
 
-        println("Dog $name:")
-
-        words.forEach { println(it) }
+        println(getSpeech())
     }
 
+
+    fun getSpeech() : String {
+
+        val builder = StringBuilder("Dog $name:\n")
+
+        getWordsAsList().forEach { builder.append(it).append("\n") }
+
+        return builder.toString()
+    }
+
+    fun getWordsAsList(): List<String> = words
+
+    fun getSoundAsText() = "Dog $name: \n\t$sound"
 
 }
