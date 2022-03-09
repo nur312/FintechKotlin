@@ -3,18 +3,17 @@ package ru.tinkoff.fintech.homework1.pets
 class Cat(override val name: String, override val sound: String = "meow") : Pet {
 
 
-    override fun makeSound() {
+    override fun makeSound() = "Cat $name:\n\t$sound\n"
 
-        println("Cat $name:\n\t$sound")
-    }
+    fun vibrate(times: Int = 1): String {
 
-    fun vibrate(times: Int = 1) {
-
-        println("Cat $name:")
+        val builder = StringBuilder("Cat $name:\n")
 
         for (i in 1..times) {
-            println("\t${vibration}")
+            builder.append("\t${vibration}\n")
         }
+
+        return builder.toString()
     }
 
     companion object {

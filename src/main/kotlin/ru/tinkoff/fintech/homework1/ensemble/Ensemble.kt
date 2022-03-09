@@ -7,17 +7,20 @@ class Ensemble(private val cat: Cat, private val dog: Dog) {
 
     fun getListOfParticipants() = listOf(cat.name, dog.name)
 
-    fun makeMusic() {
+    fun makeMusic(): String {
 
-        dog.speak()
+        val builder = StringBuilder()
 
-        println("Ensemble's music")
+        builder.append(dog.getSpeech())
 
-        cat.vibrate(4)
+        builder.append("Ensemble's music")
 
-        dog.makeSound()
+        builder.append(cat.vibrate(2))
 
+        builder.append(dog.makeSound())
 
-        cat.makeSound()
+        builder.append(cat.makeSound())
+
+        return builder.toString()
     }
 }

@@ -6,6 +6,21 @@ import org.junit.jupiter.api.Assertions.*
 
 internal class DogTest {
 
+    /*
+    * 1) Написать unit-тесты, покрывающие все пограничные состояния, метода одного из классов из задания 2 лекции 1.
+    *
+    * Выбрал метод memorizeWord(word: String) из класса Dog.
+    * */
+
+    @Test
+    fun `проверяем случай, когда собака не знает ни однгог слова`() {
+        val dog = Dog("Кеша")
+
+        val expected = ""
+
+        assertEquals(expected, dog.getSpeech())
+    }
+
     @Test
     fun `проверяем запоминаются ли слова собакой`() {
         val dog = Dog("Кеша")
@@ -13,9 +28,9 @@ internal class DogTest {
         dog.memorizeWord("доллар")
         dog.memorizeWord("остановись")
 
-        val expected = listOf("доллар", "остановись")
+        val expected = "Dog Кеша:\nдоллар\nостановись\n"
 
-        assertEquals(expected, dog.getWordsAsList())
+        assertEquals(expected, dog.getSpeech())
     }
 
     @Test
@@ -27,8 +42,8 @@ internal class DogTest {
         dog.memorizeWord("остановись")
         dog.memorizeWord("уже")
 
-        val expected = listOf("доллар", "остановись")
+        val expected = "Dog Кеша:\nдоллар\nостановись\n"
 
-        assertEquals(expected, dog.getWordsAsList())
+        assertEquals(expected, dog.getSpeech())
     }
 }

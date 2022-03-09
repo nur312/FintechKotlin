@@ -6,5 +6,5 @@ interface Pet {
 
     val sound: String
 
-    fun makeSound()
+    fun makeSound() : String
 }
