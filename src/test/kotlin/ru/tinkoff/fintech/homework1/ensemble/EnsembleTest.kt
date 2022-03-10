@@ -10,7 +10,7 @@ import ru.tinkoff.fintech.homework1.pets.Cat
 import ru.tinkoff.fintech.homework1.pets.Dog
 
 
-internal class EnsembleTest {
+class EnsembleTest {
 
     @Test
     fun `проверяем исполнение`() {

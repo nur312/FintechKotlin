@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 
-internal class DogTest {
+class DogTest {
 
     /*
     * 1) Написать unit-тесты, покрывающие все пограничные состояния, метода одного из классов из задания 2 лекции 1.
