@@ -18,7 +18,6 @@ internal class QueueImplTest {
 
             for (i in 1..capacity) {
 
-
                 assertTrue(queue.offer(i))
                 assertEquals(i, queue.size)
             }
