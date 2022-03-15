@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 
-internal class StackImplTest {
+class StackImplTest {
 
     private lateinit var stack: Stack<Int>
 
