@@ -5,15 +5,22 @@ import ru.tinkoff.fintech.homework1.pets.Dog
 
 class Ensemble(private val cat: Cat, private val dog: Dog) {
 
-    fun makeMusic() {
+    fun getListOfParticipants() = listOf(cat.name, dog.name)
 
-        println("Ensemble's music")
+    fun makeMusic(): String {
 
-        cat.vibrate(4)
+        val builder = StringBuilder()
 
-        dog.makeSound("wow")
+        builder.append(dog.getSpeech())
 
+        builder.append("Ensemble's music")
 
-        cat.makeSound()
+        builder.append(cat.vibrate(2))
+
+        builder.append(dog.makeSound())
+
+        builder.append(cat.makeSound())
+
+        return builder.toString()
     }
 }

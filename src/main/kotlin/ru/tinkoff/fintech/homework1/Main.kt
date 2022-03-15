@@ -13,31 +13,31 @@ fun main() {
     var pet: Pet = cat
 
     // cat's sound
-    pet.makeSound()
+    println(pet.makeSound())
 
     pet = dog
 
     // dog's sound
-    pet.makeSound()
+    println(pet.makeSound())
 
     // mur, mur...
-    cat.vibrate(1)
+    println(cat.vibrate(1))
 
     // russian dod :)
-    dog.makeSound("гав")
+    println(dog.makeSound("гав"))
 
     dog.memorizeWord("Hello")
     dog.memorizeWord("world")
     dog.memorizeWord("Impossible")
 
-    dog.speak()
+    println(dog.getSpeech())
 
 
     val ensemble = Ensemble(cat, dog)
 
 
 
-    ensemble.makeMusic()
+    println(ensemble.makeMusic())
 
 
 }

@@ -7,16 +7,9 @@ class Dog(override val name: String, override val sound: String = "bark", privat
     private val words: MutableList<String> = ArrayList(maxMemorizeWordCount)
 
 
-    override fun makeSound() {
+    override fun makeSound() = "Dog $name: \n\t$sound\n"
 
-        println("Dog $name: \n\t$sound")
-
-    }
-
-    fun makeSound(anotherSound: String) {
-
-        println("Dog $name: \n\t$anotherSound")
-    }
+    fun makeSound(anotherSound: String) = "Dog $name: \n\t$anotherSound\n"
 
     fun memorizeWord(word: String) {
 
@@ -31,12 +24,19 @@ class Dog(override val name: String, override val sound: String = "bark", privat
         words.add(word)
     }
 
-    fun speak() {
 
-        println("Dog $name:")
+    fun getSpeech(): String {
 
-        words.forEach { println(it) }
+        if (words.isEmpty()) {
+
+            return ""
+        }
+
+        val builder = StringBuilder("Dog $name:\n")
+
+        words.forEach { builder.append(it).append("\n") }
+
+        return builder.toString()
     }
-
 
 }
