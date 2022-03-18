@@ -15,8 +15,7 @@ class StackImpl<T>(override val capacity: Int) : Stack<T> {
             throw ArrayStoreException("Стэк переполнен")
         }
 
-        array[size] = element
-        ++size
+        array[size++] = element
     }
 
     override fun pop(): T {
@@ -37,7 +36,7 @@ class StackImpl<T>(override val capacity: Int) : Stack<T> {
     override fun peek(): T {
         if (size == 0) {
 
-            throw ArrayIndexOutOfBoundsException("Нельзся получить элемент из пустого стэка")
+            throw ArrayIndexOutOfBoundsException("Нельзя получить элемент из пустого стэка")
         }
 
         return array[size - 1] as T

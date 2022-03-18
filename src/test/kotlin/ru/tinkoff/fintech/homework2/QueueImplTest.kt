@@ -11,22 +11,55 @@ class QueueImplTest {
     private lateinit var queue: Queue<Int>
 
     @Test
+    fun `check if an initial queue is empty`() {
+        queue = QueueImpl(3)
+
+        val stackSize = queue.size
+
+        assertEquals(0, stackSize)
+    }
+
+    @Test
+    fun `empty queue is threw a exception if execute a remove() method`() {
+        queue = QueueImpl(3)
+
+        assertThrows(NoSuchElementException::class.java) { queue.remove() }
+    }
+
+    @Test
+    fun `empty queue is threw a exception if execute a element() method`() {
+        queue = QueueImpl(3)
+
+        assertThrows(NoSuchElementException::class.java) { queue.element() }
+    }
+
+    @Test
+    fun `check if it is possible to create a queue with a negative size`() {
+
+        assertThrows(NegativeArraySizeException::class.java) { queue = QueueImpl(-1) }
+    }
+
+    @Test
     fun `метод offer() - добавляются ли элементы в очередь`() {
-        for (capacity in 1..9) {
+        for (capacity in listOf(4, 5)) {
 
             queue = QueueImpl(capacity)
 
             for (i in 1..capacity) {
+                val res = queue.offer(i)
 
-                assertTrue(queue.offer(i))
-                assertEquals(i, queue.size)
+                assertAll(
+                    { assertTrue(res) },
+                    { assertEquals(i, queue.size) }
+                )
+
             }
         }
     }
 
     @Test
     fun `метод offer() - при попытке добавить слишком много элементов метод offer у Queue должно вернуть false`() {
-        for (capacity in 1..9) {
+        for (capacity in listOf(4, 5)) {
 
             queue = QueueImpl(capacity)
 
@@ -35,13 +68,15 @@ class QueueImplTest {
                 queue.offer(i)
             }
 
-            assertFalse(queue.offer(0))
+            val res = queue.offer(0)
+
+            assertFalse(res)
         }
     }
 
     @Test
-    fun `poll() - проверям соблюдают ли элементы очередь`() {
-        for (capacity in 1..9) {
+    fun `poll() - проверяем соблюдают ли элементы очередь`() {
+        for (capacity in listOf(4, 5)) {
 
             queue = QueueImpl(capacity)
 
@@ -51,15 +86,18 @@ class QueueImplTest {
             }
 
             for (i in 1..capacity) {
+                val polledElement = queue.poll()
 
-                assertEquals(i, queue.poll())
-                assertEquals(capacity - i, queue.size)
+                assertAll(
+                    { assertEquals(i, polledElement) },
+                    { assertEquals(capacity - i, queue.size) }
+                )
             }
         }
     }
 
     @Test
-    fun `ереходит ли элемент в начало массива`() {
+    fun `Переходит ли элемент в начало массива`() {
         queue = QueueImpl(3)
         queue.offer(1)
         queue.offer(2)
@@ -70,10 +108,14 @@ class QueueImplTest {
         assertTrue(queue.offer(4))
         assertTrue(queue.offer(4))
 
+        val firstPolledElement = queue.poll()
+        val secondPolledElement = queue.poll()
+        val thirdPolledElement = queue.poll()
+
         assertAll(
-            { assertEquals(3, queue.poll()) },
-            { assertEquals(4, queue.poll()) },
-            { assertEquals(4, queue.poll()) },
+            { assertEquals(3, firstPolledElement) },
+            { assertEquals(4, secondPolledElement) },
+            { assertEquals(4, thirdPolledElement) },
         )
     }
 
@@ -83,11 +125,13 @@ class QueueImplTest {
         queue.offer(1)
         queue.poll()
 
-        assertTrue(queue.offer(3))
+        val res = queue.offer(3)
+        val polledElement = queue.poll()
 
         assertAll(
+            { assertTrue(res) },
             { assertEquals(1, queue.size) },
-            { assertEquals(3, queue.poll()) }
+            { assertEquals(3, polledElement) }
         )
     }
 
@@ -97,8 +141,11 @@ class QueueImplTest {
         queue.offer(1)
         queue.offer(2)
 
-        assertEquals(1, queue.peek())
-        assertEquals(1, queue.peek())
+        val firstPeek = queue.peek()
+        val secondPeek = queue.peek()
+
+        assertEquals(1, firstPeek)
+        assertEquals(1, secondPeek)
     }
 
     @Test
@@ -109,7 +156,9 @@ class QueueImplTest {
         queue.poll()
         queue.poll()
 
-        assertNull(queue.peek())
+        val peekedElement = queue.peek()
+
+        assertNull(peekedElement)
     }
 
     @Test

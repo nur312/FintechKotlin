@@ -12,7 +12,9 @@ class StackImplTest {
     fun `check if an initial stack is empty`() {
         stack = StackImpl(3)
 
-        assertEquals(0, stack.size)
+        val stackSize = stack.size
+
+        assertEquals(0, stackSize)
     }
 
     @Test
@@ -30,15 +32,27 @@ class StackImplTest {
     }
 
     @Test
+    fun `check if it is possible to create a stack with a negative size`() {
+
+        assertThrows(NegativeArraySizeException::class.java) { stack = StackImpl(-1) }
+    }
+
+    @Test
     fun `check if we can add to stack elements`() {
-        for (capacity in 1..9) {
+        for (capacity in listOf(4, 5)) {
 
             stack = StackImpl(capacity)
 
             for (i in 1..stack.capacity) {
                 stack.push(i)
-                assertEquals(i, stack.size)
-                assertEquals(i, stack.peek())
+
+                val stackSize = stack.size
+                val lastInElement = stack.peek()
+
+                assertAll(
+                    { assertEquals(i, stackSize) },
+                    { assertEquals(i, lastInElement) }
+                )
             }
         }
     }
@@ -46,7 +60,7 @@ class StackImplTest {
 
     @Test
     fun `check if stack throws an exception when it is added many elements`() {
-        for (capacity in 1..9) {
+        for (capacity in listOf(0, 4, 5)) {
 
             stack = StackImpl(capacity)
 
@@ -61,7 +75,7 @@ class StackImplTest {
 
     @Test
     fun `check if stack deletes an element`() {
-        for (capacity in 1..9) {
+        for (capacity in listOf(4, 5)) {
 
             stack = StackImpl(capacity)
 
@@ -72,8 +86,13 @@ class StackImplTest {
 
             for (i in stack.capacity downTo 1) {
 
-                assertEquals(i, stack.size)
-                assertEquals(i, stack.pop())
+                val stackSize = stack.size
+                val poppedElement = stack.pop()
+
+                assertAll(
+                    { assertEquals(i, stackSize) },
+                    { assertEquals(i, poppedElement) }
+                )
             }
 
             assertEquals(0, stack.size)
