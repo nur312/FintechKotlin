@@ -14,9 +14,9 @@ class QueueImplTest {
     fun `check if an initial queue is empty`() {
         queue = QueueImpl(3)
 
-        val stackSize = queue.size
+        val queueSize = queue.size
 
-        assertEquals(0, stackSize)
+        assertEquals(0, queueSize)
     }
 
     @Test
@@ -130,7 +130,7 @@ class QueueImplTest {
 
         assertAll(
             { assertTrue(res) },
-            { assertEquals(1, queue.size) },
+            { assertEquals(0, queue.size) },
             { assertEquals(3, polledElement) }
         )
     }
