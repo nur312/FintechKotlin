@@ -21,7 +21,7 @@ class AutoServiceImpl : AutoService {
 
     override fun groupCarsByTypeOfBody(autos: List<Auto>): Map<String, List<Auto>> {
 
-        return autos.asSequence().groupBy(Auto::typeOfBody)
+        return autos.groupBy(Auto::typeOfBody)
     }
 
     override fun filterCarsAndTake(

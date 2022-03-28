@@ -33,7 +33,12 @@ class TranslatorImpl : Translator {
         ),
     )
 
-    override fun translate(word: String, from: String, to: String): String? {
-        return dictionary[from]?.get(to)?.get(word)
+    override fun translate(word: String, from: String, to: String): String {
+
+        val fromToDictionary = dictionary[from]?.get(to)
+            ?: throw IllegalArgumentException("There is not dictionary from $from to $to")
+
+        return fromToDictionary[word]
+            ?: throw NoSuchElementException("There is not the word = \"$word\"")
     }
 }

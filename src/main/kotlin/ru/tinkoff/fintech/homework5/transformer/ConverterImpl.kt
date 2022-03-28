@@ -7,13 +7,10 @@ class ConverterImpl : Converter {
         "USD" to mapOf("RUB" to 104.16)
     )
 
-    override fun convertMoney(amount: Double, from: String, to: String): Double? {
-        val rate = currencies[from]?.get(to)
+    override fun convertMoney(amount: Double, from: String, to: String): Double {
 
-        if (rate != null) {
-            return amount * rate
-        }
+        val rate = currencies[from]?.get(to) ?: throw IllegalArgumentException("$from - $to is not convertable")
 
-        return null
+        return amount * rate
     }
 }
