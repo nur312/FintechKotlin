@@ -2,6 +2,7 @@ package ru.tinkoff.fintech.homework5.transformer
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import java.lang.IllegalArgumentException
 
 class ConverterImplTest {
 
@@ -17,8 +18,7 @@ class ConverterImplTest {
 
     @Test
     fun `convert a unknown currency to dollars`() {
-        val convertedValue = converter.convertMoney(10_000.0, from = "UNKNOWN")
 
-        assertNull(convertedValue)
+        assertThrows(IllegalArgumentException::class.java) { converter.convertMoney(10_000.0, from = "UNKNOWN") }
     }
 }

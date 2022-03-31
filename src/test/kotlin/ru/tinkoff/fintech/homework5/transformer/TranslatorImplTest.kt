@@ -17,8 +17,7 @@ class TranslatorImplTest {
 
     @Test
     fun `null is expected if there is not a translation`() {
-        val translation = translator.translate("Бексус")
 
-        assertNull(translation)
+        assertThrows(NoSuchElementException::class.java) { translator.translate("Бексус") }
     }
 }
