@@ -51,7 +51,6 @@ class ThreadPool(numOfThreads: Int, maxNumOfTask: Int = 10000) : Executor {
      * Те, которые в очереди, не будут выполнены.
      * @return ответ на вопрос: работает ли сейчас какой-нибудь поток?
      */
-    @Synchronized
     fun shutdown(): Boolean {
         val isAnybodyRunning: Boolean
         lock.lock()
