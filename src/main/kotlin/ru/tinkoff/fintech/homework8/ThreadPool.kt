@@ -40,7 +40,6 @@ class ThreadPool(numOfThreads: Int, maxNumOfTask: Int = 10000) : Executor {
      * Добавляет задание в очередь на выполнение.
      * @param command задание
      */
-    @Synchronized
     override fun execute(command: Runnable) = lockThenInvoke {
         check(!isStopped) { "ThreadPool is stopped" }
         tasks.put(command)
